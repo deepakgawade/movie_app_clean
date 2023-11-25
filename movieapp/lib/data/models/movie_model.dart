@@ -41,7 +41,7 @@ class MovieModel extends Equatable{
 
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [id, poster_path,title];
 
   // final MovieModelList name;
   // final Map<String, dynamic> currencies;
@@ -66,67 +66,5 @@ class MovieModel extends Equatable{
 
 
 }
-// @JsonSerializable()
-// class MovieModelList extends Equatable{
-
-//   final String common;
-//   final String official;
-
-//       factory MovieModelList.fromJson(Map<String, dynamic> json) =>
-//       _$MovieModelListFromJson(json);
-
-//   const MovieModelList({required this.common, required this.official});
- 
-
-//   @override
-//   List<Object?> get props => [common, official];
-
-// }
-// @JsonSerializable()
-// class Maps extends Equatable{
-
-//   final String googleMaps;
- 
-
-//       factory Maps.fromJson(Map<String, dynamic> json) =>
-//       _$MapsFromJson(json);
-
-//   const Maps({required this.googleMaps,});
 
 
-//   @override
-//   List<Object?> get props => [googleMaps,];
-
-// }
-// @JsonSerializable()
-// class Flags extends Equatable{
-
-//   final String png;
- 
-
-//       factory Flags.fromJson(Map<String, dynamic> json) =>
-//       _$FlagsFromJson(json);
-
-//   const Flags({required this.png,});
- 
-
-//   @override
-//   List<Object?> get props => [png,];
-
-// }
-// @JsonSerializable()
-// class Capital extends Equatable{
-
-//   final List<double> latlng;
- 
-
-//       factory Capital.fromJson(Map<String, dynamic> json) =>
-//       _$CapitalFromJson(json);
-
-//   const Capital({required this.latlng,});
- 
-
-//   @override
-//   List<Object?> get props => [latlng,];
-
-// }
