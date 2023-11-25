@@ -6,7 +6,7 @@ sealed class MoviesEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
-
+//events for movielist
 class MoviesResetEvent extends MoviesEvent{
   
 
@@ -15,8 +15,33 @@ class MoviesUpcomingEvent extends MoviesEvent{
   
 
 }
-class MoviesSearchEvent extends MoviesEvent{
-  final String country;
 
- const MoviesSearchEvent({required this.country});
+
+
+//movie detail events
+class MovieDetailEvent extends MoviesEvent{
+  final String movieId;
+
+ const MovieDetailEvent({required this.movieId});
+
+}
+class MovieDetailResetEvent extends MoviesEvent{
+ 
+
+
+
+}
+
+// are movie search events
+class MovieSearchEvent extends MoviesEvent{
+  final String keyword;
+
+ const MovieSearchEvent({required this.keyword});
+
+}
+class MovieSearchResetEvent extends MoviesEvent{
+ 
+
+
+
 }

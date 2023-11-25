@@ -47,7 +47,7 @@ class MovieModel extends Equatable{
   // final Map<String, dynamic> currencies;
   // final List<String> capital;
   final String title;
-  final String poster_path;
+  final String? poster_path;
   
   final int id;
 
@@ -59,7 +59,7 @@ class MovieModel extends Equatable{
 
   
   Movie toEntity(){
-    return Movie(id: id,poster: poster_path,title: title);
+    return Movie(id: id,poster: poster_path??"",title: title);
   }
 
 

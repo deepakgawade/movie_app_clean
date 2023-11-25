@@ -20,7 +20,7 @@ Map<String, dynamic> _$MovieModelListToJson(MovieModelList instance) =>
 
 MovieModel _$MovieModelFromJson(Map<String, dynamic> json) => MovieModel(
       id: json['id'] as int,
-      poster_path: json['poster_path'] as String,
+      poster_path: json['poster_path'] as String?,
       title: json['title'] as String,
     );
 
