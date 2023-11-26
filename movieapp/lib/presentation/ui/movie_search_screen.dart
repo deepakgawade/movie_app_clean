@@ -41,15 +41,14 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
       appBar: AppBar(
         backgroundColor: CustomColors.fillcolor,
         centerTitle: true, scrolledUnderElevation: 0,
-        toolbarHeight: 8.h,
+        toolbarHeight: 15.h,
         flexibleSpace: Container(
           width: 80.w,
-          margin: const EdgeInsets.only(top: 50, left: 10, right: 10),
-          padding: EdgeInsets.symmetric(horizontal: 10),
+            margin: const EdgeInsets.only(top: 40, left: 10, right: 10,bottom: 10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: CustomColors.onAppBarColor),
-          child: Row(
+          child: Row(crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
@@ -58,13 +57,13 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
                     moviesBloc.add(MovieSearchResetEvent());
                   },
                   icon: Icon(
-                    Icons.arrow_back_ios,
+                    Icons.arrow_back_ios,size: 18,
                     color: CustomColors.greyIconColor,
                   )),
-              Container(
-                width: 250,
+              Flexible(
+               // width: 250,
                 child: TextField(
-                  decoration: InputDecoration(
+                  decoration: InputDecoration(contentPadding: EdgeInsets.only(left: 10,bottom: 10,top:10),
                       border: InputBorder.none,
                       hintText: 'TV shows, Movies and more',
                       hintStyle: Theme.of(context).textTheme.bodyLarge),

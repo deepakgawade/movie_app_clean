@@ -1,64 +1,78 @@
-//https://www.youtube.com/watch?v=qZ40Z62tcXM
+
+
 
 
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:flutter/services.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class _PlayerVideoAndPopPage extends StatefulWidget {
+class PlayerVideoAndPopPage extends StatefulWidget {
   final String url;
 
-  const _PlayerVideoAndPopPage({super.key, required this.url});
+  const PlayerVideoAndPopPage({super.key, required this.url});
   @override
-  _PlayerVideoAndPopPageState createState() => _PlayerVideoAndPopPageState();
+  PlayerVideoAndPopPageState createState() => PlayerVideoAndPopPageState();
 }
 
-class _PlayerVideoAndPopPageState extends State<_PlayerVideoAndPopPage> {
-  late VideoPlayerController _videoPlayerController;
-  bool startedPlaying = false;
+class PlayerVideoAndPopPageState extends State<PlayerVideoAndPopPage> {
+  late YoutubePlayerController _controller;
+
+
 
   @override
   void initState() {
+ 
     super.initState();
+_controller =  YoutubePlayerController(
+    initialVideoId: widget.url,
+    flags: const YoutubePlayerFlags(
+        autoPlay: true,
+        mute: false,
+    ),
+);
+   
 
-    _videoPlayerController =
-        VideoPlayerController.asset('assets/Butterfly-209.mp4');
-    _videoPlayerController.addListener(() {
-      if (startedPlaying && !_videoPlayerController.value.isPlaying) {
-        Navigator.pop(context);
-      }
-    });
-  }
+ }
 
   @override
   void dispose() {
-    _videoPlayerController.dispose();
+    _controller.dispose();
+      SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
     super.dispose();
   }
 
-  Future<bool> started() async {
-    await _videoPlayerController.initialize();
-    await _videoPlayerController.play();
-    startedPlaying = true;
-    return true;
-  }
+ 
+ 
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: Center(
-        child: FutureBuilder<bool>(
-          future: started(),
-          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-            if (snapshot.data ?? false) {
-              return AspectRatio(
-                aspectRatio: _videoPlayerController.value.aspectRatio,
-                child: VideoPlayer(_videoPlayerController),
-              );
-            } else {
-              return const Text('waiting for video to load');
-            }
-          },
-        ),
+        child:YoutubePlayerBuilder(
+    player: YoutubePlayer(bottomActions: [   ElevatedButton(onPressed: (){
+                Navigator.pop(context);
+               }, child: const  Text("Done"))],
+        controller: _controller,onEnded: (metaData) {
+            Navigator.pop(context);
+        },
+    ),
+    builder: (context, player){
+        return Stack(
+            children: [
+                // some widgets
+                player,
+            
+            ],
+        );
+    },
+),
+        
+
       ),
     );
   }

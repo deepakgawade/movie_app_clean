@@ -31,92 +31,88 @@ class _MoviesScreenState extends State<MoviesScreen> {
   @override
   Widget build(BuildContext context) {
     final moviesBloc = BlocProvider.of<MoviesBloc>(context);
-
     return Scaffold(
       backgroundColor: CustomColors.backgroundColor,
       appBar: AppBar(
         backgroundColor: CustomColors.fillcolor,
-        centerTitle: true, scrolledUnderElevation: 0,
-        toolbarHeight: 8.h,
-        flexibleSpace: GestureDetector(onTap: () {
-              Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const MovieSearchScreen(),
-                          ));
+        centerTitle: true,
+        scrolledUnderElevation: 0,
+        toolbarHeight: 10.h,
+        flexibleSpace: GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MovieSearchScreen(),
+                ));
           },
           child: Container(
             width: 80.w,
-            margin: const EdgeInsets.only(top: 50, left: 10, right: 10),
+            margin:
+                const EdgeInsets.only(top: 40, left: 10, right: 10, bottom: 10),
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: CustomColors.onAppBarColor),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Padding(
-                padding: const EdgeInsets.only(left:8.0),
-                child: Text("Watch",style: Theme.of(context).textTheme.titleMedium!.copyWith(color: CustomColors.greyIconColor),),
-              ),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text(
+                    "Watch",
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(color: CustomColors.greyIconColor),
+                  ),
+                ),
                 IconButton(
-                    onPressed: () {
-                    
-                    },
-                    icon: Icon(Icons.search_rounded,color: CustomColors.greyIconColor,))
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.search_rounded,
+                    color: CustomColors.greyIconColor,
+                  ),
+                )
               ],
             ),
           ),
         ),
-        // title: Container(
-        //   width: 80.w,
-        //   decoration: BoxDecoration(
-        //       borderRadius: BorderRadius.circular(20), color: Colors.grey[400]),
-        //   child: Row(mainAxisAlignment: MainAxisAlignment.end,
-        //     children: [
-        //       IconButton(
-        //           onPressed: () {
-        //             // Navigator.push(
-        //             //     context,
-        //             //     MaterialPageRoute(
-        //             //       builder: (context) => const MovieSearchScreen(),
-        //             //     ));
-        //           },
-        //           icon: Icon(Icons.search_rounded))
-        //     ],
-        //   ),
-        // ),
-        // //  title: const Text("Upcoming movies"),
       ),
       body: BlocBuilder<MoviesBloc, MoviesState>(
         bloc: moviesBloc,
         builder: (context, state) {
           if (state is MoviesInitialState) {
-            moviesBloc.add(MoviesUpcomingEvent());
-            return const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Getting Movies...loading"),
-                ],
-              ),
+            moviesBloc.add(
+              MoviesUpcomingEvent(),
+            );
+            return const Center(
+              child: CircularProgressIndicator(),
             );
           } else if (state is MoviesLoadingState) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           } else if (state is MoviesLoadedState) {
             return Center(
                 child: ListView.builder(
-                            itemCount: state.movies.length,shrinkWrap: true,
-                            itemBuilder: (context, index) {
+              itemCount: state.movies.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                    // Navigator.push(context, MaterialPageRoute(builder: (context) => const MoviesDetailScreen(),));
-                    // moviesBloc.add(MovieDetailEvent(movieId: state.movies[index].id.toString()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MoviesDetailScreen(),
+                        ));
+                    moviesBloc.add(MovieDetailEvent(
+                        movieId: state.movies[index].id.toString()));
                   },
                   child: Container(
                     width: 80.w,
                     height: 20.h,
-                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                     //padding: EdgeInsets.all(5),
                     alignment: const Alignment(-1, 1),
                     decoration: BoxDecoration(
@@ -129,9 +125,12 @@ class _MoviesScreenState extends State<MoviesScreen> {
                       ),
                     ),
                     child: Container(
-                      width: double.infinity,padding: EdgeInsets.all(20),
+                      width: double.infinity,
+                      padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                          borderRadius:const  BorderRadius.only(bottomLeft:Radius.circular(10),bottomRight: Radius.circular(10)),
+                          borderRadius: const BorderRadius.only(
+                              bottomLeft: Radius.circular(10),
+                              bottomRight: Radius.circular(10)),
                           gradient: CustomColors.lineargradient),
                       child: Text(
                         state.movies[index].title,
@@ -141,8 +140,8 @@ class _MoviesScreenState extends State<MoviesScreen> {
                     ),
                   ),
                 );
-                            },
-                          )
+              },
+            )
 
                 //  Column(
                 //   mainAxisAlignment: MainAxisAlignment.center,
