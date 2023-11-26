@@ -112,7 +112,7 @@ class _MoviesDetailScreenState extends State<MoviesDetailScreen> {
                                                   const TicketsScreen(),
                                             ));
                                       },
-                                      child: Text("Get Tickets")),
+                                      child: Text("Get Tickets",style: Theme.of(context).textTheme.labelLarge,)),
                                 ),
                                 state.trailers.isNotEmpty
                                     ? SizedBox(
@@ -156,12 +156,12 @@ class _MoviesDetailScreenState extends State<MoviesDetailScreen> {
                                                 },
                                               );
                                             },
-                                            child: const Row(
+                                            child:  Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                Icon(Icons.play_arrow),
-                                                Text("Watch Trailer"),
+                                               const Icon(Icons.play_arrow,size: 18,),
+                                                Text("Watch Trailer",style: Theme.of(context).textTheme.labelLarge,),
                                               ],
                                             )),
                                       )
@@ -173,7 +173,7 @@ class _MoviesDetailScreenState extends State<MoviesDetailScreen> {
                   expandedHeight: 40.h,
                   leading: IconButton(
                     icon: Icon(
-                      Icons.arrow_back_ios,
+                      Icons.arrow_back_ios,size: 30,
                       color: CustomColors.fillcolor,
                     ),
                     onPressed: () {
@@ -191,8 +191,8 @@ class _MoviesDetailScreenState extends State<MoviesDetailScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Genres"),
-                              SizedBox(height: 10,),
+                              Text("Genres",style: Theme.of(context).textTheme.titleMedium!.copyWith(color: CustomColors.blackTextColor),),
+                            const  SizedBox(height: 10,),
                               SizedBox(
                                 height: 50,
                                 child: ListView.builder(
@@ -201,13 +201,7 @@ class _MoviesDetailScreenState extends State<MoviesDetailScreen> {
                                   scrollDirection: Axis.horizontal,
                                   itemBuilder: (context, index) {
                                     return Container(alignment: Alignment.center,
-                                      padding: EdgeInsets.symmetric(horizontal: 20),margin: EdgeInsets.only(right: 10),
-                                      child: Text(
-                                        state.movie.genres[index],
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleMedium,
-                                      ),
+                                      padding: const EdgeInsets.symmetric(horizontal: 20),margin: EdgeInsets.only(right: 10),
                                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(25),
                                         color: index == 0 || index == 6
                                             ? CustomColors.blueTextColor
@@ -222,20 +216,26 @@ class _MoviesDetailScreenState extends State<MoviesDetailScreen> {
                                                         : CustomColors
                                                             .greenAppColor,
                                       ),
+                                      child: Text(
+                                        state.movie.genres[index],
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall,
+                                      ),
                                     );
                                   },
                                 ),
                               ),
-                              const Divider(
-                                thickness: 1,
+                               Divider(
+                                thickness: 1,color: CustomColors.labelTextColor,
                                 height: 25,
                               ),
-                              Text("Overview"),
+                              Text("Overview",style: Theme.of(context).textTheme.titleMedium!.copyWith(color: CustomColors.blackTextColor),),
                               Container(
                                 margin: EdgeInsets.only(top: 10),
                                 width: 90.w,
                                 child: Text(
-                                  state.movie.overview,
+                                  state.movie.overview,style: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w400,color: CustomColors.bodyTextColor),
                                   textAlign: TextAlign.justify,
                                 ),
                               )

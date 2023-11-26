@@ -43,7 +43,7 @@ class _TicketsPaymentsScreenState extends State<TicketsPaymentsScreen> {
               pinned: false,
               floating: false, centerTitle: true,
               title: Container(
-                margin: EdgeInsets.only(top: 23),
+                margin: const EdgeInsets.only(top: 23),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -52,13 +52,13 @@ class _TicketsPaymentsScreenState extends State<TicketsPaymentsScreen> {
                       style: Theme.of(context)
                           .textTheme
                           .titleMedium!
-                          .copyWith(color: CustomColors.greyIconColor),
+                          .copyWith(color: CustomColors.blackTextColor),
                     ),
                     Text(
                       "March 5, 2021 I 12:30 hall 1",
-                      style: Theme.of(context)
+                      style:  Theme.of(context)
                           .textTheme
-                          .titleMedium!
+                          .labelMedium!
                           .copyWith(color: CustomColors.blueTextColor),
                     ),
                   ],
@@ -114,8 +114,8 @@ class _TicketsPaymentsScreenState extends State<TicketsPaymentsScreen> {
               expandedHeight: 10.h,
               leading: IconButton(
                 icon: Icon(
-                  Icons.arrow_back_ios,
-                  color: CustomColors.greyIconColor,
+                  Icons.arrow_back_ios,size: 30,
+                  color: CustomColors.blackTextColor,
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -125,14 +125,14 @@ class _TicketsPaymentsScreenState extends State<TicketsPaymentsScreen> {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) => Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                     SizedBox(height: 40.h,),
                     
-                     Column(
+                     const Column(
                         children: [
                           Row(
                             children: [
@@ -155,33 +155,34 @@ class _TicketsPaymentsScreenState extends State<TicketsPaymentsScreen> {
                           Container(
                             height: 45,
                             alignment: Alignment.center,
-                            margin: EdgeInsets.only(right: 10),
-                            padding: EdgeInsets.symmetric(
+                            margin: const EdgeInsets.only(right: 10),
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 0),
+                            decoration: BoxDecoration(
+                                color: CustomColors.textColor,
+                                borderRadius: BorderRadius.circular(10)),
                             child: RichText(
                               text: TextSpan(
                                   text: "Total Price\n",
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodySmall!
-                                      .copyWith(
-                                        color: CustomColors.greyIconColor,
+                                      .labelMedium!
+                                      .copyWith(fontSize: 10,
+                                        fontWeight: FontWeight.w400,letterSpacing: -0.2,
+                                        color: CustomColors.blackTextColor,
                                       ),
                                   children: [
                                     TextSpan(
                                         text: "\$ 50",
                                         style: Theme.of(context)
                                             .textTheme
-                                            .bodyLarge!
+                                            .titleMedium!
                                             .copyWith(
-                                              fontWeight: FontWeight.w900,
-                                              color: CustomColors.greyIconColor,
+                                              fontWeight: FontWeight.w600,
+                                              color: CustomColors.blackTextColor,letterSpacing: 0.2
                                             ))
                                   ]),
                             ),
-                            decoration: BoxDecoration(
-                                color: CustomColors.textColor,
-                                borderRadius: BorderRadius.circular(10)),
                           ),
                           SizedBox(
                             width: 200,
@@ -211,11 +212,11 @@ class _TicketsPaymentsScreenState extends State<TicketsPaymentsScreen> {
                               },
                               child: Text("Proceed to pay",
                                   style: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge!
-                                      .copyWith(
-                                        color: CustomColors.fillcolor,
-                                      )),
+                                          .textTheme
+                                          .labelLarge!
+                                          .copyWith(
+                                            color: CustomColors.fillcolor,
+                                          )),
                             ),
                           ),
                         ],
@@ -243,7 +244,7 @@ class IconLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-    padding: EdgeInsets.all(10),
+    padding: const EdgeInsets.all(10),
       child: Row(
         children: [
           Image.asset("assets/$image"),
@@ -253,7 +254,7 @@ class IconLabel extends StatelessWidget {
           Text(
             text,
             style:
-                Theme.of(context).textTheme.bodyLarge,
+                Theme.of(context).textTheme.labelMedium!.copyWith(color: CustomColors.bodyTextColor),
           )
         ],
       ),

@@ -10,6 +10,15 @@ class CustomColors{
   static Color blackTextColor = const Color.fromRGBO(32, 44, 67, 1
 
 );
+  static Color fieldTextColor = const Color.fromRGBO(32, 44, 67, 0.3
+
+
+);
+  static Color labelTextColor = const Color.fromRGBO(219, 219, 223, 1
+
+
+
+);
 
 
   static Color textColor = const Color.fromRGBO(166, 166, 166, 0.1

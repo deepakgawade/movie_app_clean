@@ -37,7 +37,7 @@ class _MoviesScreenState extends State<MoviesScreen> {
         backgroundColor: CustomColors.fillcolor,
         centerTitle: true,
         scrolledUnderElevation: 0,
-        toolbarHeight: 10.h,
+        toolbarHeight: 12.h,
         flexibleSpace: GestureDetector(
           onTap: () {
             Navigator.push(
@@ -64,14 +64,14 @@ class _MoviesScreenState extends State<MoviesScreen> {
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium!
-                        .copyWith(color: CustomColors.greyIconColor),
+                        .copyWith(color: CustomColors.blackTextColor),
                   ),
                 ),
                 IconButton(
                   onPressed: () {},
                   icon: Icon(
                     Icons.search_rounded,
-                    color: CustomColors.greyIconColor,
+                    color: CustomColors.blackTextColor,
                   ),
                 )
               ],
@@ -135,7 +135,7 @@ class _MoviesScreenState extends State<MoviesScreen> {
                       child: Text(
                         state.movies[index].title,
                         textAlign: TextAlign.left,
-                        style: Theme.of(context).textTheme.titleMedium,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ),
                   ),

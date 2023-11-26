@@ -41,7 +41,7 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
       appBar: AppBar(
         backgroundColor: CustomColors.fillcolor,
         centerTitle: true, scrolledUnderElevation: 0,
-        toolbarHeight: 15.h,
+        toolbarHeight: 12.h,
         flexibleSpace: Container(
           width: 80.w,
             margin: const EdgeInsets.only(top: 40, left: 10, right: 10,bottom: 10),
@@ -58,15 +58,15 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
                   },
                   icon: Icon(
                     Icons.arrow_back_ios,size: 18,
-                    color: CustomColors.greyIconColor,
+                    color: CustomColors.blackTextColor,
                   )),
               Flexible(
                // width: 250,
-                child: TextField(
+                child: TextField(style: Theme.of(context).textTheme.titleSmall!.copyWith(color: CustomColors.blackTextColor),
                   decoration: InputDecoration(contentPadding: EdgeInsets.only(left: 10,bottom: 10,top:10),
                       border: InputBorder.none,
                       hintText: 'TV shows, Movies and more',
-                      hintStyle: Theme.of(context).textTheme.bodyLarge),
+                      hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color:CustomColors.fieldTextColor )),
                   controller: textController,
                   onChanged: (value) {
                     if (_debounce?.isActive ?? false) _debounce?.cancel();
@@ -82,7 +82,7 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
                   },
                   icon: Icon(
                     Icons.close,
-                    color: CustomColors.greyIconColor,
+                    color: CustomColors.blackTextColor,
                   ))
             ],
           ),
@@ -124,13 +124,13 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
                         Text("Top Results",
                             style: Theme.of(context)
                                 .textTheme
-                                .titleMedium!
-                                .copyWith(color: CustomColors.greyIconColor)),
+                                .labelMedium!
+                                .copyWith(color: CustomColors.blackTextColor)),
                       ],
                     ),
                     Divider(
                       thickness: 1,
-                      color: CustomColors.greyIconColor,
+                      color: CustomColors.labelTextColor,
                     ),
                     ListView.builder(physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
@@ -138,13 +138,13 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       builder: (context) => const MoviesDetailScreen(),
-                            //     ));
-                            // moviesBloc.add(MovieDetailEvent(
-                            //     movieId: state.movies[index].id.toString()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const MoviesDetailScreen(),
+                                ));
+                            moviesBloc.add(MovieDetailEvent(
+                                movieId: state.movies[index].id.toString()));
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -171,10 +171,10 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        state.movies[index].title,
+                                        state.movies[index].title,style: Theme.of(context).textTheme.titleMedium!.copyWith(color: CustomColors.blackTextColor,),
                                         textAlign: TextAlign.left,
                                       ),
-                                      Text("Crime"),
+                                      Text("Crime",style: Theme.of(context).textTheme.labelMedium!.copyWith(color: CustomColors.labelTextColor),),
                                     ],
                                   )),
                               Text(
@@ -195,11 +195,11 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
               ),
             );
           }
-          return const Center(
+          return  Center(
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Find TV shows, Movies and lot more"),
+              Text("Find TV shows, Movies and lot more",style: Theme.of(context).textTheme.titleLarge!.copyWith(color: CustomColors.fieldTextColor,),)
             ],
           ));
         },

@@ -54,13 +54,13 @@ class _TicketsScreenState extends State<TicketsScreen> {
                       style: Theme.of(context)
                           .textTheme
                           .titleMedium!
-                          .copyWith(color: CustomColors.greyIconColor),
+                          .copyWith(color: CustomColors.blackTextColor),
                     ),
                     Text(
                       "In theaters december 22, 2021",
                       style: Theme.of(context)
                           .textTheme
-                          .titleMedium!
+                          .labelMedium!
                           .copyWith(color: CustomColors.blueTextColor),
                     ),
                   ],
@@ -116,8 +116,8 @@ class _TicketsScreenState extends State<TicketsScreen> {
               expandedHeight: 10.h,
               leading: IconButton(
                 icon: Icon(
-                  Icons.arrow_back_ios,
-                  color: CustomColors.greyIconColor,
+                  Icons.arrow_back_ios,size: 30,
+                  color: CustomColors.blackTextColor,
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -133,10 +133,8 @@ class _TicketsScreenState extends State<TicketsScreen> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                        const   Text("Date"),
-                        const  SizedBox(
-                            height: 10,
-                          ),
+                           Text("Date",style: Theme.of(context).textTheme.titleMedium!.copyWith(color: CustomColors.blackTextColor),),
+                       
                           Container(
                             height: 50,margin: EdgeInsets.symmetric(vertical: 20),
                             child: ListView.builder(
@@ -151,7 +149,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
                                       horizontal: 20, vertical: 0),
                                   child: Text(
                                     dateList[index],
-                                    style: TextStyle(color: Colors.black),
+                                    style:index == 0? Theme.of(context).textTheme.bodySmall:Theme.of(context).textTheme.bodySmall!.copyWith(color: CustomColors.blackTextColor,)
                                   ),
                                   decoration: BoxDecoration(
                                       color: index == 0
@@ -164,7 +162,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
                           ),
                           Container(
                             margin: const EdgeInsets.symmetric(vertical: 30),
-                            height: 200,
+                            height: 210,
                             child: ListView.builder(
                               itemCount: dateList.length,
                               shrinkWrap: true,
@@ -181,17 +179,18 @@ class _TicketsScreenState extends State<TicketsScreen> {
                                             "12:30 ",
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .bodyMedium!
+                                                .labelMedium!
                                                 .copyWith(
-                                                    fontWeight: FontWeight.w500,
+                                                 
                                                     color: CustomColors
                                                         .blackTextColor),
                                           ),
                                           Text("Cinetech + hall 1",
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .bodyMedium!
+                                                  .bodySmall!
                                                   .copyWith(
+                                                    fontWeight: FontWeight.w400,
                                                       color: CustomColors
                                                           .bodyTextColor))
                                         ],
@@ -201,7 +200,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
                                         height: 150,
                                         alignment: Alignment.center,
                                         margin:
-                                            const EdgeInsets.only(right: 10),
+                                            const EdgeInsets.only(right: 10,top: 10,bottom: 10),
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 20, vertical: 5),
                                         child: GridView.count(
@@ -229,7 +228,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
                                               text: "From ",
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .bodyLarge!
+                                                  .labelMedium!
                                                   .copyWith(
                                                       color: CustomColors
                                                           .bodyTextColor),
@@ -238,17 +237,17 @@ class _TicketsScreenState extends State<TicketsScreen> {
                                                 text: "50\$",
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .bodyLarge!
+                                                    .labelMedium!
                                                     .copyWith(
                                                         fontWeight:
-                                                            FontWeight.w900,
+                                                            FontWeight.w700,
                                                         color: CustomColors
                                                             .blackTextColor)),
                                             TextSpan(
                                                 text: " or",
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .bodyLarge!
+                                                    .labelMedium!
                                                     .copyWith(
                                                         color: CustomColors
                                                             .bodyTextColor)),
@@ -256,10 +255,10 @@ class _TicketsScreenState extends State<TicketsScreen> {
                                                 text: " 2500 bonus",
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .bodyLarge!
+                                                    .labelMedium!
                                                     .copyWith(
                                                         fontWeight:
-                                                            FontWeight.w900,
+                                                            FontWeight.w700,
                                                         color: CustomColors
                                                             .blackTextColor))
                                           ]))
@@ -302,7 +301,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
                                   child: Text("Select seat",
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodyLarge!
+                                          .labelLarge!
                                           .copyWith(
                                             color: CustomColors.fillcolor,
                                           )),
