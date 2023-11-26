@@ -41,10 +41,10 @@ class _MovieSearchScreenState extends State<MovieSearchScreen> {
       appBar: AppBar(
         backgroundColor: CustomColors.fillcolor,
         centerTitle: true, scrolledUnderElevation: 0,
-        toolbarHeight: 12.h,
-        flexibleSpace: Container(
-          width: 80.w,
-            margin: const EdgeInsets.only(top: 40, left: 10, right: 10,bottom: 10),
+        toolbarHeight: 80,
+        title: Container(
+          width: 80.w,height: 50,
+            margin: const EdgeInsets.only(top: 40, left: 10, right: 10,bottom: 20),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: CustomColors.onAppBarColor),
