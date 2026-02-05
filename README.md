@@ -5,7 +5,7 @@ Movies app
 
 erDiagram
     Users ||--o{ Posts : "author_ref"
-    Posts ||--|{ Comments : "nested_subcollection"
+    Posts ||--|{ Comments : "sub_subcollection"
     
     Users {
         string id
@@ -16,6 +16,20 @@ erDiagram
         string title
     }
 
+    Comments {
+    string commentId
+    string text
+}
 
+```
+```mermaid
+erDiagram
+    %% One-to-Many Mandatory: Sub-collection
+    PRODUCT ||--|{ VARIANT : "sub-collection"
 
+    %% One-to-Many Optional: Reference
+    USER ||--o{ ORDER : "places"
+
+    %% One-to-One: Linked Document
+    USER ||--|| SETTINGS : "has"
 ```
